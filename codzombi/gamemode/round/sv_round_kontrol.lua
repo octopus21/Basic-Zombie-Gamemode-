@@ -5,12 +5,7 @@ local zombieSayisi = 5
 local dogDogdumu = false
 
 
-local zombisınıfları = {
 
-	ents.Create("npc_zombie"),
-	ents.Create("npc_fastzombie"),
-
-}
 
 local zombipoz = {
 	
