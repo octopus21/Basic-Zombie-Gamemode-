@@ -3,6 +3,15 @@ local t = 0
 local denIx = 2
 local zombieSayisi = 5
 local dogDogdumu = false
+
+
+local zombisınıfları = {
+
+	ents.Create("npc_zombie"),
+	ents.Create("npc_fastzombie"),
+
+}
+
 local zombipoz = {
 	
 	Vector(508.649139, -1141.467041, -79.968750),
@@ -47,6 +56,43 @@ end
 
 local digerdalgabeklemesuresi = false
 
+function EnIyıZombiSpawnı()
+
+	local ZombiVector = Vector(0,0,0)
+	local Uzaklık = 0
+
+	if table.Count(ents.FindByClass("npc_zombie")) == 0 then
+         
+         return zombipoz[math.random(1, table.Count(zombipoz))]
+
+	end
+
+	for k , v in pairs(zombipoz) do
+
+      local yakınzombi = 1000000
+
+      for a , b in pairs(ents.FindByClass("npc_zombie")) do
+
+      	if b:GetPos():Distance(v) < yakınzombi then
+
+      		yakınzombi = b:Getpos():Distance(v)
+
+      	end
+
+      end
+
+      	if yakınzombi > uzaklık then
+
+      		uzaklık = yakınzombi
+      		ZombiVector = v
+
+      	end
+
+   end
+
+end
+
+
 hook.Add("Think", "DalgaSistemi", function()
 
          if round == 1 and dogDogdumu == true then
@@ -76,24 +122,42 @@ hook.Add("Think", "DalgaSistemi", function()
 
          end
 
+                  
                   if round == 1 and dogDogdumu == false and table.Count(ents.FindByClass("npc_zombie")) == 0 then
 
                            etkinround = etkinround + 1
 
                            digerdalgabeklemesuresi = true
-                           timer.Simple(10, function() -- TİMERI KALDIRABİLİRSİN DURUMA BAĞLI
+                           timer.Simple(10, function()
 
-                           zombieSayisi = 1 * etkinround
+                           zombieSayisi = 5 * etkinround
                            dogDogdumu = true
 
                            	end)
                            
                   end
 
-             
+                /*
+                 if round == 1 and dogDogdumu == false and table.Count(ents.FindByClass("npc_zombie")) == 5 then
+
+                 	local temp2 = ents.Create("npc_fastzombie")
+                 	temp2:SetPos(zombipoz[math.random(1 , table.Count(zombipoz))])
+                 	temp2:Spawn()
+
+                 	       etkinround = etkinround + 1
+
+                           digerdalgabeklemesuresi = true
+                           timer.Simple(10, function()
+
+                           zombieSayisi = 5 * etkinround
+                           dogDogdumu = true
+
+                           end)
+
+                 end
+                 */             
 
 	end)
-
 
 
 function GuncelRoundDurumu()
@@ -103,5 +167,3 @@ function GuncelRoundDurumu()
 	net.Broadcast()
 
 end
-
-
