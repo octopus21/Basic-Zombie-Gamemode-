@@ -22,9 +22,34 @@ local etkinround = 1
 
 util.AddNetworkString("GuncelDurumRoundSayısı")
 
+/*
+function hazırDurumu()
+
+    local baslama = false
+	local genel = 0
+	local baslamaDurumu = 4
+
+	if baslamaDurumu > genel then
+
+        net.Start("hazır")
+        net.Broadcast()
+		baslaRound()
+		baslama = true
+
+
+	else 
+
+	baslama = false	
+	-- body
+    end
+
+end
+*/
+
 
 function baslaRound()
          
+         baslama = true
          round = 1
          GuncelRoundDurumu()
          dogDogdumu = true
@@ -123,12 +148,12 @@ hook.Add("Think", "DalgaSistemi", function()
                            etkinround = etkinround + 1
 
                            digerdalgabeklemesuresi = true
-                           timer.Simple(10, function()
+                           --timer.Simple(10, function()
 
                            zombieSayisi = 5 * etkinround
                            dogDogdumu = true
 
-                           	end)
+                           	--end)
                            
                   end
 

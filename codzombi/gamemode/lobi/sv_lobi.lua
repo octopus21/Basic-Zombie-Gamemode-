@@ -1,5 +1,6 @@
 util.AddNetworkString("lobiac")
 util.AddNetworkString("lobigit")
+--util.AddNetworkString("hazır")
 
 function lobi_giris()
 
@@ -7,6 +8,16 @@ function lobi_giris()
 	net.Broadcast()
 
 end
+
+/*
+function lobi_hazır()
+
+	net.Start("hazır")
+	net.Broadcast()
+	-- body
+end
+
+*/
 
 net.Receive("lobigit", function(len,ply)
 
