@@ -1,0 +1,10 @@
+"terrortown"
+{
+	"base"		"base"
+	"title"		"Habibi's Zombie Basic Gamemode"
+	"maps"		"^gm_"
+	"menusystem"	"1"
+
+
+        "Settings"
+}
